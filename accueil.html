@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sante Plus</title>
+
+    <!-- Inclusion de Font Awesome pour les icônes -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url("images/main.png") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto; /* Barre de défilement verticale */
+        overflow-x: hidden; /* Suppression du défilement horizontal */
+        scroll-behavior: smooth; /* Défilement fluide */
+      }
+
+      /* nav -------------------------------------------------------------------------------------------------*/
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #e4e8ea;
+        margin-left: 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #e4e8ea;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .nav-links a:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #00f6ed;
+      }
+
+      /* Logo principal */
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 11rem;
+        height: 11rem;
+        margin: 3rem auto;
+      }
+
+      .square {
+        width: 5rem;
+        height: 5rem;
+        background-color: #00f6ed;
+        border-radius: 10%;
+        position: relative;
+      }
+
+      .rotate {
+        transform: rotate(45deg);
+        position: relative;
+        top: -10px;
+        left: 10px;
+        background-color: white;
+      }
+
+      .square-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 9.5rem;
+        font-weight: bold;
+        color: #00f6ed;
+        line-height: 1;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        color: #e4e8ea;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        max-width: 600px;
+        line-height: 1.5;
+      }
+
+      /* Section Services & Équipes -----------------------------------------------------------------------*/
+      #services-equipes {
+        padding: 20px 20px;
+        text-align: center;
+        background-color: black;
+        width: 100%;
+      }
+
+      #services-equipes h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #e4e8ea;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .flex-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 360px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .flex-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .flex-item i {
+        font-size: 3rem;
+        color: #00f6ed;
+        margin-bottom: 1rem;
+      }
+
+      .flex-item h3 {
+        font-size: 1.5rem;
+        color: #e4e8ea;
+        margin: 0.5rem 0;
+      }
+
+      .flex-item p {
+        font-size: 1rem;
+        color: #e4e8ea;
+        line-height: 1.5;
+      }
+
+      /* Bouton centré */
+      .button {
+        background-color: #00f6ed; /* Couleur d'accent */
+        color: #242426; /* Arrière-plan principal */
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Section Images et Texte divisée en deux parties -----------------------------------------------------*/
+      #image-text-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 110%;
+        background-color: black;
+      }
+
+      .image-text-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .image-side {
+        flex: 1;
+      }
+
+      .responsive-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .text-side {
+        flex: 1;
+        padding: 40px;
+        background-color: #4b716f;
+        color: #e4e8ea;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .text-side h2 {
+        font-size: 25px;
+        margin-right: 60px;
+        margin-bottom: 1rem;
+      }
+
+      .text-side p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: justify; /* Alignement justifié pour le paragraphe */
+        margin: 0 20px; /* Marge pour éviter que le texte colle complètement */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">Les services Sante Plus</div>
+      <div class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#services-equipes">Services</a>
+        <a href="#services-equipes">Equipe</a>
+        <a href="#temoignages">Témoignages</a>
+      </div>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="accueil">
+      <div class="logo-container">
+        <div class="square"></div>
+        <div class="square rotate">
+          <div class="square-content">+</div>
+        </div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+      <h2>Bienvenue chez Santé Plus</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil vitae,
+        incidunt molestiae impedit similique labore necessitatibus repellat,
+        ratione veniam eveniet fugit quaerat neque pariatur harum? In doloribus
+        porro sequi illo. quibusdam harum iure atque vitae quos excepturi, ullam
+        placeat, deserunt quae praesentium voluptatibus?
+      </p>
+      <button class="button">Retrouvez la paix d'esprit</button>
+    </section>
+
+    <!-- Section Services & Équipes -->
+    <section id="services-equipes">
+      <h2>Nos services professionnels à prix abordables</h2>
+      <div class="flex-container">
+        <!-- Partie 1 -->
+        <div class="flex-item">
+          <i class="fas fa-user-md"></i>
+          <h3>Médecins Spécialistes</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            facilisi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Reiciendis tenetur ea ipsa doloribus iusto sequi quibusdam repellat
+            mollitia, ad voluptatem dolore tempora enim distinctio sed blanditii
+            doloremque! Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. id rem error assumenda et aut aliquam illum perferendis
+            mollitia iusto pariatur.
+          </p>
+        </div>
+        <!-- Partie 2 -->
+        <div class="flex-item">
+          <i class="fas fa-head-side-virus"></i>
+          <h3>Psychothérapeutes</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            facilisi. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Tempora officiis incidunt repudiandae adipisci necessitatibus natus,
+            omnis sint ea, odit deleniti velit beatae quasi mollitia blanditiis,
+            magni culpa numquam quas. Ad!
+          </p>
+        </div>
+        <!-- Partie 3 -->
+        <div class="flex-item">
+          <i class="fas fa-smile"></i>
+          <h3>Multidisciplinaire</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            facilisi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Accusamus, quod commodi laborum optio, quaerat ex dolorem
+            praesentium ipsum perspiciatis deleniti eveniet exercitationem
+            distinctio! Voluptates corporis repudiandae totam quia nobis?
+            Minima!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Images et Texte -->
+    <section id="image-text-section">
+      <div class="image-text-container">
+        <!-- Partie gauche : Image -->
+        <div class="image-side">
+          <img
+            src="images/team.webp"
+            alt="Description"
+            class="responsive-image"
+          />
+        </div>
+        <!-- Partie droite : Texte -->
+        <div class="text-side">
+          <h2>Une équipe de professionnels au service de votre santé</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
+            dolor, rem facilis exercitationem optio placeat sed nostrum sunt
+            autem animi debitis mollitia eius ad perferendis cum ducimus!
+            Aliquid, dicta cum? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Molestiae ducimus deserunt alias? Ipsum sed,
+            facere dolorum quibusdam omnis laudantium, iste ad explicabo
+            quisquam sunt quaerat. Dicta dolores aliquid repellat corrupti?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
+            natus sapiente est? Tempore cumque unde repellendus molestias
+            ratione labore laudantium totam a est quo! Fuga omnis eius neque
+            culpa quia! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Eligendi id beatae voluptate ab culpa, officia molestias modi nisi
+            quis praesentium, debitis dolores, qui deleniti eius distinctio
+            officiis voluptas aut rerum.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
